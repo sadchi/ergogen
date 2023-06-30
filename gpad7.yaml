@@ -9,33 +9,33 @@ points:
       columns:
         outer:
           rows.top.skip: true
-          key.column_net: F0
+          key.column_net: F5
         pinky:
-          key.column_net: F1
+          key.column_net: F6
         ring:
           key.splay: -5
           key.origin: [-12, -19]
           key.stagger: 12
-          key.column_net: C7
+          key.column_net: F7
         middle:
           key.stagger: 5
-          key.column_net: C6
+          key.column_net: B6
         index:
           key.stagger: -6
-          key.column_net: B6
+          key.column_net: B5
         inner:
           key.stagger: -2
-          key.column_net: B5
+          key.column_net: B4
         aux:
           rows.bottom.skip: true
-          key.column_net: B4
+          key.column_net: D7
       rows:
         bottom:
-          row_net: D2
-        home:
           row_net: D1
+        home:
+          row_net: D2
         top:
-          row_net: D0
+          row_net: D3
     thumbfan:
       anchor:
         ref: matrix_inner_bottom
@@ -43,22 +43,22 @@ points:
       columns:
         near:
           rows.thumb_secondary.skip: true
-          key.column_net: B5
+          key.column_net: B4
         home:
           key.spread: 21.25
           key.splay: -20
           key.origin: [-11.75, -9]
-          key.column_net: B4
+          key.column_net: D7
         far:
           key.spread: 21.25
           key.splay: -20
           key.origin: [-9.5, -9]
-          key.column_net: B3
+          key.column_net: D6
       rows:
         thumb:
-          row_net: D3
+          row_net: D0
         thumb_secondary:
-          row_net: D2
+          row_net: D1
   rotate: 0
 outlines:
   board:

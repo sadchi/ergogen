@@ -9,23 +9,33 @@ points:
       columns:
         outer:
           rows.top.skip: true
+          key.column_net: F0
         pinky:
+          key.column_net: F1
         ring:
           key.splay: -5
           key.origin: [-12, -19]
           key.stagger: 12
+          key.column_net: C7
         middle:
           key.stagger: 5
+          key.column_net: C6
         index:
           key.stagger: -6
+          key.column_net: B6
         inner:
           key.stagger: -2
+          key.column_net: B5
         aux:
           rows.bottom.skip: true
+          key.column_net: B4
       rows:
         bottom:
+          row_net: D2
         home:
+          row_net: D1
         top:
+          row_net: D0
     thumbfan:
       anchor:
         ref: matrix_inner_bottom
@@ -33,17 +43,22 @@ points:
       columns:
         near:
           rows.thumb_secondary.skip: true
+          key.column_net: B5
         home:
           key.spread: 21.25
           key.splay: -20
           key.origin: [-11.75, -9]
+          key.column_net: B4
         far:
           key.spread: 21.25
           key.splay: -20
           key.origin: [-9.5, -9]
+          key.column_net: B3
       rows:
         thumb:
+          row_net: D3
         thumb_secondary:
+          row_net: D2
   rotate: 0
 outlines:
   board:
@@ -110,20 +125,15 @@ outlines:
       asym: source
       size: 14 # Plate cutouts are 14mm * 14mm for both MX and Choc
       bound: false      
-  topplate-preview:
-    - what: outline
-      name: keys-with-spacing
-    - what: outline
-      name: switch_cutouts
-      operation: subtract
-    - what: outline
-      name: screwholes
-      operation: add
   case_top:
     - what: outline
+      name: board
+    - what: outline
       name: screwholes
+      operation: subtract
     - what: outline
       name: keys-with-spacing
+      operation: subtract
   case_plate:
     - what: outline
       name: board
@@ -161,5 +171,5 @@ pcbs:
           orientation: "down"
         where:
           ref: matrix_aux_top
-          shift: [30, -15]
+          shift: [30, -5]
           rotate: -90

@@ -1,0 +1,165 @@
+units:
+  px: u+4
+  py: u+4
+points:
+  zones:
+    matrix:
+      anchor:
+        rotate: 5
+      columns:
+        outer:
+          rows.top.skip: true
+        pinky:
+        ring:
+          key.splay: -5
+          key.origin: [-12, -19]
+          key.stagger: 12
+        middle:
+          key.stagger: 5
+        index:
+          key.stagger: -6
+        inner:
+          key.stagger: -2
+        aux:
+          rows.bottom.skip: true
+      rows:
+        bottom:
+        home:
+        top:
+    thumbfan:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-7, -19]
+      columns:
+        near:
+          rows.thumb_secondary.skip: true
+        home:
+          key.spread: 21.25
+          key.splay: -20
+          key.origin: [-11.75, -9]
+        far:
+          key.spread: 21.25
+          key.splay: -20
+          key.origin: [-9.5, -9]
+      rows:
+        thumb:
+        thumb_secondary:
+  rotate: 0
+outlines:
+  board:
+    - what: rectangle
+      where: 
+        ref: matrix_middle_top
+        shift: [17, -45]
+      size: [215, 150]
+      corner: 5
+  screwholes:
+    - what: circle
+      where:
+        ref: matrix_outer_home
+        shift: [-20, 20]
+      radius: 3
+    - what: circle
+      where:
+        ref: matrix_outer_bottom
+        shift: [-20, -20]
+      radius: 3
+    - what: circle
+      where:
+        ref: matrix_middle_top
+        shift: [0, 20]
+      radius: 3
+    - what: circle
+      where:
+        ref: matrix_aux_top
+        shift: [20, 20]
+      radius: 3  
+    - what: circle
+      where:
+        ref: matrix_pinky_bottom
+        shift: [20, -20]
+      radius: 3
+    - what: circle
+      where:
+        ref: thumbfan_near_thumb
+        shift: [-20, -20]
+      radius: 3
+    - what: circle
+      where:
+        ref: thumbfan_far_thumb
+        shift: [20, -20]
+      radius: 3  
+    - what: circle
+      where:
+        ref: thumbfan_far_thumb_secondary
+        shift: [20, 20]
+      radius: 3      
+  keycaps:
+    - what: rectangle
+      where: true
+      asym: source
+      size: 18
+  keys-with-spacing:
+    - what: rectangle
+      where: true
+      asym: source
+      size: 24
+  switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: 14 # Plate cutouts are 14mm * 14mm for both MX and Choc
+      bound: false      
+  topplate-preview:
+    - what: outline
+      name: keys-with-spacing
+    - what: outline
+      name: switch_cutouts
+      operation: subtract
+    - what: outline
+      name: screwholes
+      operation: add
+  case_top:
+    - what: outline
+      name: screwholes
+    - what: outline
+      name: keys-with-spacing
+  case_plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract
+    - what: outline
+      name: switch_cutouts
+      operation: subtract
+pcbs:
+  gpad7:
+    outlines:
+      main:
+        outline: board
+    footprints:
+      keys:
+        what: mx
+        where: true
+        params:
+          reverse: false
+          keycaps: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"
+      diode:
+        what: diode
+        where: true
+        params:
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [0, -5]     
+      promicro:
+        what: teensy2
+        params:
+          orientation: "down"
+        where:
+          ref: matrix_aux_top
+          shift: [30, -15]
+          rotate: -90

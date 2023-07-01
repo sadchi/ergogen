@@ -73,42 +73,42 @@ outlines:
       where:
         ref: matrix_outer_home
         shift: [-20, 20]
-      radius: 3
+      radius: 1.5
     - what: circle
       where:
         ref: matrix_outer_bottom
         shift: [-20, -20]
-      radius: 3
+      radius: 1.5
     - what: circle
       where:
         ref: matrix_middle_top
         shift: [0, 20]
-      radius: 3
+      radius: 1.5
     - what: circle
       where:
         ref: matrix_aux_top
         shift: [20, 20]
-      radius: 3  
+      radius: 1.5  
     - what: circle
       where:
         ref: matrix_pinky_bottom
         shift: [20, -20]
-      radius: 3
+      radius: 1.5
     - what: circle
       where:
         ref: thumbfan_near_thumb
         shift: [-20, -20]
-      radius: 3
+      radius: 1.5
     - what: circle
       where:
         ref: thumbfan_far_thumb
         shift: [20, -20]
-      radius: 3  
+      radius: 1.5  
     - what: circle
       where:
         ref: thumbfan_far_thumb_secondary
         shift: [20, 20]
-      radius: 3      
+      radius: 1.5      
   keycaps:
     - what: rectangle
       where: true

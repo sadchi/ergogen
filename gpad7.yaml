@@ -46,12 +46,12 @@ points:
           key.column_net: B4
         home:
           key.spread: 21.25
-          key.splay: -20
+          key.splay: -28
           key.origin: [-11.75, -9]
           key.column_net: D7
         far:
           key.spread: 21.25
-          key.splay: -20
+          key.splay: -28
           key.origin: [-9.5, -9]
           key.column_net: D6
       rows:

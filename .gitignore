@@ -118,5 +118,5 @@ dist
 # Project specific
 output
 temp*
-gpad*/
 !gpad*/pcbs/*processed.kicad_pcb
+gpad*/

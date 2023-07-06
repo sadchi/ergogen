@@ -189,7 +189,7 @@ outlines:
       name: keycaps
       operation: add
 pcbs:
-  gpad7:
+  gpad_mini:
     outlines:
       main:
         outline: case_bottom

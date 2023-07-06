@@ -1,114 +1,136 @@
 units:
-  px: u+4
-  py: u+4
+  dx: 8
+  dy: 8
 points:
+  key:
+    bind: [0, 0,0,0]
   zones:
     matrix:
       anchor:
-        rotate: 5
+        rotate: 0
       columns:
         outer:
-          rows.top.skip: true
-          key.column_net: F5
+          rows.bottom.skip: true
+          key.bind: [21,10,35,0]
+          key.column_net: B0
         pinky:
-          key.column_net: F6
+          rows.bottom.skip: true
+          rows.top.skip: true
+          key.bind: [0,10,35,0]
+          key.column_net: B1
         ring:
-          key.splay: -5
+          key.splay: 0
           key.origin: [-12, -19]
           key.stagger: 12
-          key.column_net: F7
+          key.bind: [9,10,28,0]
+          key.column_net: B2
         middle:
-          key.stagger: 5
-          key.column_net: B6
+          key.stagger: 9
+          
+          key.column_net: B3
         index:
-          key.stagger: -6
-          key.column_net: B5
+          key.stagger: -12
+          key.bind: [12,0,25,0]
+          key.column_net: B7
         inner:
-          key.stagger: -2
-          key.column_net: B4
-        aux:
-          rows.bottom.skip: true
-          key.column_net: D7
+          key.stagger: -5
+          key.bind: [17,25,0,0]
+          key.column_net: D0
       rows:
         bottom:
-          row_net: D1
+          row_net: B6
         home:
-          row_net: D2
+          row_net: B5
         top:
-          row_net: D3
+          row_net: B4
     thumbfan:
       anchor:
         ref: matrix_inner_bottom
-        shift: [-7, -19]
+        shift: [-7, -20]
       columns:
         near:
-          rows.thumb_secondary.skip: true
-          key.column_net: B4
+          key.bind: [0,32,0,0]
+          key.column_net: B3
         home:
           key.spread: 21.25
           key.splay: -20
           key.origin: [-11.75, -9]
-          key.column_net: D7
+          key.bind: [0,0.1,0,0]
+          key.column_net: B7
         far:
           key.spread: 21.25
           key.splay: -20
-          key.origin: [-9.5, -9]
-          key.column_net: D6
+          key.origin: [-10.7, -10]
+          key.bind: [0,0,0,0]
+          key.column_net: D0
       rows:
         thumb:
-          row_net: D0
-        thumb_secondary:
-          row_net: D1
-  rotate: 0
+          row_net: F7
 outlines:
   board:
     - what: rectangle
-      where: 
-        ref: matrix_middle_top
-        shift: [17, -45]
-      size: [215, 150]
+      where: true
+      asym: source
+      bound: true
+      size: [u + 2*dx , u + 2*dx]
       corner: 5
+      fillet: 5
   screwholes:
     - what: circle
       where:
         ref: matrix_outer_home
-        shift: [-20, 20]
+        shift: [-14, 54]
       radius: 1.5
     - what: circle
       where:
-        ref: matrix_outer_bottom
-        shift: [-20, -20]
+        ref: matrix_outer_home
+        shift: [-14, -49]
+      radius: 1.5
+    - what: circle
+      where:
+        ref: matrix_outer_home
+        shift: [-14.5, 0]
+      radius: 1.5
+    - what: circle
+      where:
+        ref: matrix_outer_home
+        shift: [134.5, 0]
       radius: 1.5
     - what: circle
       where:
         ref: matrix_middle_top
-        shift: [0, 20]
+        shift: [0, 14.5]
       radius: 1.5
     - what: circle
       where:
-        ref: matrix_aux_top
-        shift: [20, 20]
-      radius: 1.5  
+        ref: matrix_middle_top
+        shift: [0, -89.5]
+      radius: 1.5
     - what: circle
       where:
-        ref: matrix_pinky_bottom
-        shift: [20, -20]
+        ref: matrix_outer_home
+        shift: [134.5, 54]
       radius: 1.5
     - what: circle
       where:
         ref: thumbfan_near_thumb
-        shift: [-20, -20]
+        shift: [8.3, -14.5]
       radius: 1.5
     - what: circle
       where:
         ref: thumbfan_far_thumb
-        shift: [20, -20]
+        shift: [13.5, -13.5]
       radius: 1.5  
     - what: circle
       where:
-        ref: thumbfan_far_thumb_secondary
-        shift: [20, 20]
-      radius: 1.5      
+        ref: thumbfan_far_thumb
+        shift: [13.5, 13.5]
+      radius: 1.5  
+    - what: circle
+      where:
+        ref: thumbfan_far_thumb
+        shift: [-11.5, 15.5]
+      radius: 1.5    
   keycaps:
     - what: rectangle
       where: true
@@ -118,12 +140,14 @@ outlines:
     - what: rectangle
       where: true
       asym: source
-      size: 22
+      size: u + 4
+      corner: 1.5
+      fillet: 1.5
   switch_cutouts:
     - what: rectangle
       where: true
       asym: source
-      size: 14 # Plate cutouts are 14mm * 14mm for both MX and Choc
+      size: 14 
       bound: false      
   case_top:
     - what: outline
@@ -143,12 +167,21 @@ outlines:
     - what: outline
       name: switch_cutouts
       operation: subtract
-  case_plate_w_k:
+  case_bottom:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract
+  case_preview:
     - what: outline
       name: board
     - what: outline
       name: keys-with-spacing
       operation: subtract
+    - what: outline
+      name: screwholes
+      operation: add
     - what: outline
       name: screwholes
       operation: subtract
@@ -159,7 +192,7 @@ pcbs:
   gpad7:
     outlines:
       main:
-        outline: board
+        outline: case_bottom
     footprints:
       keys:
         what: mx
@@ -182,6 +215,6 @@ pcbs:
         params:
           orientation: "down"
         where:
-          ref: matrix_aux_top
-          shift: [30, -5]
-          rotate: -90
+          ref: matrix_outer_home
+          shift: [10, -30]
+          rotate: 0

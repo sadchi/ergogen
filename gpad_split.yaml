@@ -5,7 +5,7 @@ units:
   kx: capx + 0.5
   ky: capy + 0.5
   pinky_stagger: 0
-  pinky_splay: 5
+  pinky_splay: 0
   pinky_adj: -3
   ring_stagger: 1.5ky
   ring_splay: -pinky_splay

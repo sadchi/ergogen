@@ -1,0 +1,60 @@
+units:
+  laser_kerf: 0.1524
+  capx: 17.5
+  capy: 17.5
+  kx: capx + 0.5
+  ky: capy + 0.5
+  ring_stagger: 1.5ky
+  middle_stagger: 9
+  index_stagger: -12
+  index_far_stagger: 0
+points:
+  zones:
+    matrix:
+      columns:
+        pinky_far:
+          key.column_net: B0
+        pinky:
+          key.column_net: B1
+        ring:
+          key.stagger: ring_stagger
+          key.column_net: B2
+        middle:
+          key.stagger: middle_stagger
+          key.column_net: B3
+        index:
+          key.stagger: index_stagger
+          key.column_net: B7
+        index_far:
+          key.stagger: index_far_stagger
+          key.column_net: D0
+      rows:
+        bottom:
+          row_net: B6
+        home:
+          row_net: B5
+        top:
+          row_net: B4
+    thumbfan:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [0, -30]
+      columns:
+        near:
+          key.bind: [0,32,0,0]
+          key.column_net: B3
+        home:
+          key.spread: 21.25
+          key.splay: -10
+          key.origin: [-11.75, -9]
+          key.bind: [0,0.1,0,0]
+          key.column_net: B7
+        far:
+          key.spread: 21.25
+          key.splay: -10
+          key.origin: [-10.7, -10]
+          key.bind: [0,0,0,0]
+          key.column_net: D0
+      rows:
+        thumb:
+          row_net: F7

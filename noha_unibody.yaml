@@ -180,6 +180,12 @@ outlines:
     - what: outline
       name: keycaps_w_spacer
       operation: subtract  
+  bottom_plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract  
   full_preview:
     - what: outline
       name: board

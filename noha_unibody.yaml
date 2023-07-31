@@ -1,5 +1,6 @@
 units:
   laser_kerf: 0.1524
+  switch_cutout_size: 14 - laser_kerf
   capx: 17.5
   capy: 17.5
   kx: capx + 0.5
@@ -11,7 +12,8 @@ units:
   perimeter_offset: u/2+8
   perimeter_holes: perimeter_offset-4
 points:
-
+  key:
+    bind: [0, 0,0,0]
   zones:
     matrix:
       columns:
@@ -46,19 +48,17 @@ points:
         shift: [0, -24]
       columns:
         near:
-          key.bind: [0,32,0,0]
+          key.bind: [10,29,0,0]
           key.column_net: B3
         home:
           key.spread: 21.25
           key.splay: -10
           key.origin: [-11.75, -9]
-          key.bind: [0,0.1,0,0]
           key.column_net: B7
         far:
           key.spread: 21.25
           key.splay: -10
           key.origin: [-10.7, -10]
-          key.bind: [0,0,0,0]
           key.column_net: D0
       rows:
         thumb:
@@ -148,15 +148,47 @@ outlines:
       where:
         - ref: mirror_matrix_middle_top
           shift: [perimeter_holes,perimeter_holes] 
-      radius: 1.5  
+      radius: 1.5
+  switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: switch_cutout_size 
+      bound: false   
+  keycaps_w_spacer:
+    - what: rectangle
+      where: true
+      asym: source
+      bound: true
+      size: 22
+      fillet: 1.5  
   keys_plate:
     - what: outline
       name: board
     - what: outline
-      name: keycaps
+      name: switch_cutouts
       operation: subtract
     - what: outline
       name: screwholes
       operation: subtract
-      
+  top_plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract  
+    - what: outline
+      name: keycaps_w_spacer
+      operation: subtract  
+  full_preview:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract  
+    - what: outline
+      name: keycaps_w_spacer
+      operation: subtract  
+    - what: outline
+      name: keycaps            
 

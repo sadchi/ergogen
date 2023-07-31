@@ -8,7 +8,10 @@ units:
   middle_stagger: 9
   index_stagger: -12
   index_far_stagger: 0
+  perimeter_offset: u/2+8
+  perimeter_holes: perimeter_offset-4
 points:
+
   zones:
     matrix:
       columns:
@@ -28,6 +31,8 @@ points:
         index_far:
           key.stagger: index_far_stagger
           key.column_net: D0
+        aux: 
+          rows.top.skip: true
       rows:
         bottom:
           row_net: B6
@@ -38,7 +43,7 @@ points:
     thumbfan:
       anchor:
         ref: matrix_index_bottom
-        shift: [0, -30]
+        shift: [0, -24]
       columns:
         near:
           key.bind: [0,32,0,0]
@@ -58,3 +63,100 @@ points:
       rows:
         thumb:
           row_net: F7
+  rotate: -20
+  mirror:
+    ref: matrix_pinky_home
+    distance: 220
+outlines: 
+  keycaps: 
+    - what: rectangle
+      where: true
+      asym: source
+      size: 18
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: mirror_thumbfan_far_thumb
+          shift: [perimeter_offset,-perimeter_offset]
+        - ref: thumbfan_far_thumb
+          shift: [perimeter_offset,-perimeter_offset]
+        - ref: matrix_pinky_far_bottom
+          shift: [-perimeter_offset,-perimeter_offset]
+        - ref: matrix_pinky_far_top
+          shift: [-perimeter_offset,perimeter_offset]
+        - ref: matrix_middle_top
+          shift: [-perimeter_offset,perimeter_offset]
+        - ref: matrix_middle_top
+          shift: [perimeter_offset,perimeter_offset]          
+        - ref: mirror_matrix_middle_top
+          shift: [perimeter_offset,perimeter_offset]  
+        - ref: mirror_matrix_middle_top
+          shift: [-perimeter_offset,perimeter_offset]
+        - ref: mirror_matrix_pinky_far_top
+          shift: [-perimeter_offset,perimeter_offset]
+        - ref: mirror_matrix_pinky_far_bottom
+          shift: [-perimeter_offset,-perimeter_offset]
+      fillet: 3
+  screwholes:
+    - what: circle
+      where:
+        ref: mirror_thumbfan_far_thumb
+        shift: [perimeter_holes,-perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: thumbfan_far_thumb
+          shift: [perimeter_holes,-perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_pinky_far_bottom
+          shift: [-perimeter_holes,-perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_far_bottom
+          shift: [-perimeter_holes,-perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_pinky_far_top
+          shift: [-perimeter_holes,perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_far_top
+          shift: [-perimeter_holes,perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_middle_top
+          shift: [-perimeter_holes,perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_middle_top
+          shift: [-perimeter_holes,perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_middle_top
+          shift: [perimeter_holes,perimeter_holes] 
+      radius: 1.5  
+    - what: circle
+      where:
+        - ref: mirror_matrix_middle_top
+          shift: [perimeter_holes,perimeter_holes] 
+      radius: 1.5  
+  keys_plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: keycaps
+      operation: subtract
+    - what: outline
+      name: screwholes
+      operation: subtract
+      
+

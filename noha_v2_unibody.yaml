@@ -1,0 +1,202 @@
+units:
+  laser_kerf: 0.17
+  switch_cutout_size: 14 - laser_kerf
+  capx: 17.5
+  capy: 17.5
+  kx: capx + 0.5
+  ky: capy + 0.5
+  ring_stagger: 0.75ky
+  middle_stagger: 9
+  index_stagger: -12
+  index_far_stagger: 0
+  perimeter_offset: u/2+8
+  perimeter_holes: perimeter_offset-4
+points:
+  key:
+    bind: [0, 0,0,0]
+  zones:
+    matrix:
+      columns:
+        pinky_far:
+          key.spread: 21
+          key.column_net: B0
+        pinky:
+          key.bind: [0,0,0,0]
+          key.column_net: B1
+        ring:
+          key.stagger: ring_stagger
+          key.column_net: B2
+        middle:
+          key.bind: [0,0,0,0]
+          key.stagger: middle_stagger
+          key.column_net: B3
+        index:
+          key.stagger: index_stagger
+          key.column_net: B7
+        index_far:
+          key.stagger: index_far_stagger
+          key.column_net: D0
+        aux: 
+          key.stagger: -6
+          rows.bottom.skip: true
+      rows:
+        bottom:
+          row_net: B6
+        home:
+          row_net: B5
+        top:
+          row_net: B4
+        num:
+    thumbfan:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [-10, -20]
+      columns:
+        inner:
+          key.bind: [0,0,0,0]
+        near:
+          key.bind: [0,10,0,0]
+          key.column_net: B3
+        home:
+          key.bind: [0,0,0,0]
+          key.spread: 21.25
+          key.splay: -10
+          key.origin: [-11.75, -9]
+          key.column_net: B7
+        far:
+          key.bind: [0,0,0,0]
+          key.spread: 21.25
+          key.splay: -10
+          key.origin: [-10.7, -10]
+          key.column_net: D0
+      rows:
+        thumb:
+          row_net: F7
+    arrows:
+      anchor:
+        ref: matrix_pinky_bottom
+        shift: [4.5,-30]
+      columns:
+        first:
+          rows.top.skip: true
+        secomd: 
+        third:
+          rows.top.skip: true
+      rows:
+        bottom:
+        top:
+        
+
+outlines: 
+  keycaps: 
+    - what: rectangle
+      where: true
+      asym: source
+      size: 18
+  board:
+    - what: rectangle
+      where: 
+        - ref: matrix_pinky_far_num
+          shift: [65,-33]
+      size: [170,150]
+      corner: 3
+  screwholes:
+    - what: circle
+      where:
+        - ref: thumbfan_far_thumb
+          shift: [perimeter_holes,-perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_pinky_far_bottom
+          shift: [-perimeter_holes,-perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_pinky_far_num
+          shift: [-perimeter_holes,perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_middle_num
+          shift: [-perimeter_holes,perimeter_holes]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_middle_num
+          shift: [perimeter_holes,perimeter_holes] 
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_middle_bottom
+          shift: [0,-perimeter_holes-2] 
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_aux_num
+          shift: [perimeter_holes,perimeter_holes] 
+      radius: 1.5   
+    - what: circle
+      where:
+        - ref: matrix_aux_home
+          shift: [perimeter_holes,-perimeter_holes] 
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: arrows_first_bottom
+          shift: [-perimeter_holes,-perimeter_holes] 
+      radius: 1.5   
+    - what: circle
+      where:
+        - ref: arrows_third_bottom
+          shift: [perimeter_holes,-perimeter_holes] 
+      radius: 1.5      
+  switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: switch_cutout_size 
+      bound: false   
+  keycaps_w_spacer:
+    - what: rectangle
+      where: true
+      asym: source
+      bound: true
+      size: 22
+      fillet: 1.5  
+  keys_plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: switch_cutouts
+      operation: subtract
+    - what: outline
+      name: screwholes
+      operation: subtract
+  top_plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract  
+    - what: outline
+      name: keycaps_w_spacer
+      operation: subtract  
+  bottom_plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract  
+  full_preview:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract  
+    - what: outline
+      name: keycaps_w_spacer
+      operation: subtract  
+    - what: outline
+      name: keycaps            
+

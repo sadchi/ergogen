@@ -1,5 +1,5 @@
 units:
-  laser_kerf: 0.17
+  laser_kerf: 0.2
   switch_cutout_size: 14 - laser_kerf
   capx: 17.5
   capy: 17.5
@@ -9,8 +9,8 @@ units:
   middle_stagger: 9
   index_stagger: -12
   index_far_stagger: 0
-  perimeter_offset: u/2+8
-  perimeter_holes: perimeter_offset-4
+  po: u/2+8
+  po_h: po-4
 points:
   key:
     bind: [0, 0,0,0]
@@ -36,9 +36,6 @@ points:
         index_far:
           key.stagger: index_far_stagger
           key.column_net: D0
-        aux: 
-          key.stagger: -6
-          rows.bottom.skip: true
       rows:
         bottom:
           row_net: B6
@@ -46,46 +43,33 @@ points:
           row_net: B5
         top:
           row_net: B4
-        num:
     thumbfan:
       anchor:
         ref: matrix_index_bottom
-        shift: [-10, -20]
+        shift: [0, -20]
       columns:
-        inner:
-          key.bind: [0,0,0,0]
         near:
           key.bind: [0,10,0,0]
           key.column_net: B3
         home:
           key.bind: [0,0,0,0]
-          key.spread: 21.25
+          key.spread: 19.25
           key.splay: -10
           key.origin: [-11.75, -9]
           key.column_net: B7
         far:
           key.bind: [0,0,0,0]
-          key.spread: 21.25
+          key.spread: 19.25
           key.splay: -10
           key.origin: [-10.7, -10]
           key.column_net: D0
       rows:
         thumb:
           row_net: F7
-    arrows:
-      anchor:
-        ref: matrix_pinky_bottom
-        shift: [4.5,-30]
-      columns:
-        first:
-          rows.top.skip: true
-        secomd: 
-        third:
-          rows.top.skip: true
-      rows:
-        bottom:
-        top:
-        
+  rotate: -45
+  mirror:
+    ref: matrix_pinky_home
+    distance: 205
 
 outlines: 
   keycaps: 
@@ -94,63 +78,144 @@ outlines:
       asym: source
       size: 18
   board:
-    - what: rectangle
-      where: 
-        - ref: matrix_pinky_far_num
-          shift: [65,-33]
-      size: [170,150]
-      corner: 3
+    - what: polygon
+      operation: stack
+      points:
+        - ref: mirror_matrix_index_far_home
+          shift: [po, po]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [-u/2, po]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [po, po]
+        - ref: mirror_thumbfan_far_thumb
+          shift: [po, -po]
+        - ref: mirror_matrix_pinky_far_bottom
+          shift: [-po, -po]   
+        - ref: mirror_matrix_pinky_far_top
+          shift: [-po, po]          
+        - ref: mirror_matrix_middle_top
+          shift: [-po, po]
+        - ref: mirror_matrix_middle_top
+          shift: [po, po]    
+        - ref: matrix_middle_top
+          shift: [po, po]          
+        - ref: matrix_middle_top
+          shift: [-po, po]
+        - ref: matrix_pinky_far_top
+          shift: [-po, po]
+        - ref: matrix_pinky_far_bottom
+          shift: [-po, -po]          
+        - ref: thumbfan_far_thumb
+          shift: [po, -po]
+        - ref: thumbfan_far_thumb
+          shift: [po, po]          
+        - ref: thumbfan_far_thumb
+          shift: [-u/2, po]
+        - ref: matrix_index_far_home
+          shift: [po, po]
+      fillet: 4
+
   screwholes:
     - what: circle
       where:
+        - ref: mirror_thumbfan_far_thumb
+          shift: [po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_thumbfan_far_thumb
+          shift: [po_h,po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_far_bottom
+          shift: [-po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_far_top
+          shift: [-po_h,po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_middle_top
+          shift: [-po_h,po_h]
+      radius: 1.5      
+    - what: circle
+      where:
+        - ref: mirror_matrix_middle_top
+          shift: [po_h,po_h]
+      radius: 1.5 
+    - what: circle
+      where:
+        - ref: mirror_matrix_index_far_top
+          shift: [po_h+1,0]
+      radius: 1.5            
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_bottom
+          shift: [po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_middle_bottom
+          shift: [0,-po_h-2] 
+      radius: 1.5
+    - what: circle
+      where:
         - ref: thumbfan_far_thumb
-          shift: [perimeter_holes,-perimeter_holes]
+          shift: [po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: thumbfan_far_thumb
+          shift: [po_h,po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: thumbfan_near_thumb
+          shift: [-po_h,-po_h]
       radius: 1.5
     - what: circle
       where:
         - ref: matrix_pinky_far_bottom
-          shift: [-perimeter_holes,-perimeter_holes]
+          shift: [-po_h,-po_h]
       radius: 1.5
     - what: circle
       where:
-        - ref: matrix_pinky_far_num
-          shift: [-perimeter_holes,perimeter_holes]
+        - ref: matrix_pinky_far_top
+          shift: [-po_h,po_h]
       radius: 1.5
     - what: circle
       where:
-        - ref: matrix_middle_num
-          shift: [-perimeter_holes,perimeter_holes]
-      radius: 1.5
+        - ref: matrix_middle_top
+          shift: [-po_h,po_h]
+      radius: 1.5      
     - what: circle
       where:
-        - ref: matrix_middle_num
-          shift: [perimeter_holes,perimeter_holes] 
+        - ref: matrix_middle_top
+          shift: [po_h,po_h]
+      radius: 1.5 
+    - what: circle
+      where:
+        - ref: matrix_index_far_top
+          shift: [po_h+1,0]
+      radius: 1.5            
+    - what: circle
+      where:
+        - ref: matrix_pinky_bottom
+          shift: [po_h,-po_h]
       radius: 1.5
     - what: circle
       where:
         - ref: matrix_middle_bottom
-          shift: [0,-perimeter_holes-2] 
+          shift: [0,-po_h-2] 
       radius: 1.5
-    - what: circle
-      where:
-        - ref: matrix_aux_num
-          shift: [perimeter_holes,perimeter_holes] 
-      radius: 1.5   
-    - what: circle
-      where:
-        - ref: matrix_aux_home
-          shift: [perimeter_holes,-perimeter_holes] 
-      radius: 1.5
-    - what: circle
-      where:
-        - ref: arrows_first_bottom
-          shift: [-perimeter_holes,-perimeter_holes] 
-      radius: 1.5   
-    - what: circle
-      where:
-        - ref: arrows_third_bottom
-          shift: [perimeter_holes,-perimeter_holes] 
-      radius: 1.5      
   switch_cutouts:
     - what: rectangle
       where: true

@@ -1,5 +1,5 @@
 units:
-  laser_kerf: 0.2
+  laser_kerf: 0.05
   switch_cutout_size: 14 - laser_kerf
   capx: 17.5
   capy: 17.5

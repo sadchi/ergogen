@@ -12,6 +12,7 @@ module.exports = {
     pad: require('./pad'),
     promicro: require('./promicro'),
     teensy2: require('./teensy2'),
+    MH3SS2: require('./MH3SS2'),
     rgb: require('./rgb'),
     rotary: require('./rotary'),
     scrollwheel: require('./scrollwheel'),

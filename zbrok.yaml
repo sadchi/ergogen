@@ -99,6 +99,8 @@ outlines:
 pcbs:
   mainboard:
     outlines:
+      main:
+        outline: board
     footprints:
       switches:
         what: MH3SS2

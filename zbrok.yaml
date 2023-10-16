@@ -96,6 +96,12 @@ outlines:
       operation: subtract 
     - what: outline
       name: switch_cutouts
+  plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: switch_cutouts
+      operation: subtract 
 pcbs:
   mainboard:
     outlines:

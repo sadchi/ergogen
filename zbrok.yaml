@@ -2,6 +2,7 @@ units:
   switch_cutout_size: 15.7
   kx : 19.5
   ky : kx
+  offset: 8+kx/2
 points:
   zones:
     matrix:
@@ -12,7 +13,7 @@ points:
         pinky_far:
         pinky:
         ring:
-          key.stagger: .75*ky
+          key.stagger: 0.75*ky
         middle:
           key.stagger: 0.25*ky
         index:
@@ -26,32 +27,56 @@ points:
     thumbfan:
       anchor:
         ref: matrix_index_bottom
-        shift: [0, -25]
+        shift: [0, -28]
       columns:
         near:
-          key.bind: [0,0,0,0]
-          key.column_net: B3
         home:
-          key.bind: [0,0,0,0]
           key.spread: 20.5
-          key.splay: -10
           key.origin: [-11.75, -9]
-          key.column_net: B7
         far:
-          key.bind: [0,0,0,0]
           key.spread: 20.5
-          key.splay: -10
           key.origin: [-10.7, -10]
-          key.column_net: D0
       rows:
         thumb:
-          row_net: F7
   rotate: -20
   mirror:
     ref: matrix_pinky_home
     distance: 225
 
 outlines: 
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: thumbfan_far_thumb
+          shift: [offset,-offset]
+        - ref: thumbfan_near_thumb
+          shift: [-offset,-offset]
+        - ref: matrix_pinky_far_bottom
+          shift: [-offset,-offset]
+        - ref: matrix_pinky_far_top
+          shift: [-offset,offset]
+        - ref: matrix_middle_top
+          shift: [-offset,offset]
+        - ref: matrix_middle_top
+          shift: [offset,offset]
+        - ref: matrix_index_top
+          shift: [offset,offset]
+        - ref: mirror_matrix_index_top
+          shift: [offset,offset]
+        - ref: mirror_matrix_middle_top
+          shift: [offset,offset]
+        - ref: mirror_matrix_middle_top
+          shift: [-offset,offset]
+        - ref: mirror_matrix_pinky_far_top
+          shift: [-offset,offset]
+        - ref: mirror_matrix_pinky_far_bottom
+          shift: [-offset,-offset]
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-offset,-offset] 
+        - ref: mirror_thumbfan_far_thumb
+          shift: [offset,-offset]                   
+      fillet: 4 
   keycaps: 
     - what: rectangle
       where: true
@@ -62,9 +87,17 @@ outlines:
       where: true
       asym: source
       size: switch_cutout_size 
-      bound: false   
+      bound: false 
+  all:
+    - what: outline
+      name: board
+    - what: outline
+      name: keycaps
+      operation: subtract 
+    - what: outline
+      name: switch_cutouts
 pcbs:
-  tutorial:
+  mainboard:
     outlines:
     footprints:
       switches:

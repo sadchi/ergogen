@@ -121,6 +121,9 @@ temp*
 gpad*/outlines/*
 gpad*/pcbs/*
 !gpad*/pcbs/*processed.kicad_pcb
+zbrok*/outlines/*
+zbrok*/pcbs/*
+!zbrok*/pcbs/*processed.kicad_pcb
 noha*/outlines/*
 noha*/pcbs/*
 !noha*/pcbs/*processed.kicad_pcb

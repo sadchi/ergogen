@@ -1,0 +1,267 @@
+units:
+  laser_kerf: 0.15
+  switch_cutout_size: 14 - laser_kerf
+  capx: 17.5
+  capy: 17.5
+  kx: capx + 0.5
+  ky: capy + 0.5
+  ring_stagger: 0.75u
+  middle_stagger: 9
+  index_stagger: -12
+  index_far_stagger: 0
+  po: u/2+8
+  po_h: po-4
+points:
+  key:
+    bind: [0, 0,0,0]
+  zones:
+    matrix:
+      columns:
+        pinky_far:
+          key.spread: 21
+          key.column_net: B0
+        pinky:
+          key.bind: [0,0,0,0]
+          key.column_net: B1
+        ring:
+          key.stagger: ring_stagger
+          key.column_net: B2
+        middle:
+          key.bind: [0,0,0,0]
+          key.stagger: middle_stagger
+          key.column_net: B3
+        index:
+          key.stagger: index_stagger
+          key.column_net: B7
+        index_far:
+          key.stagger: index_far_stagger
+          key.column_net: D0
+      rows:
+        bottom:
+          row_net: B6
+        home:
+          row_net: B5
+        top:
+          row_net: B4
+    thumbfan:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [0, -25]
+      columns:
+        near:
+          key.bind: [0,0,0,0]
+          key.column_net: B3
+        home:
+          key.bind: [0,0,0,0]
+          key.spread: 19.25
+          key.splay: -15
+          key.origin: [-11.75, -9]
+          key.column_net: B7
+        far:
+          key.bind: [0,0,0,0]
+          key.spread: 19.25
+          key.splay: -15
+          key.origin: [-10.7, -10]
+          key.column_net: D0
+        last:
+          key.spread: 19.25
+          key.splay: -15
+          key.origin: [-10.7, -10]
+      rows:
+        thumb:
+          row_net: F7
+  rotate: -20
+  mirror:
+    ref: matrix_pinky_home
+    distance: 225
+
+outlines: 
+  keycaps: 
+    - what: rectangle
+      where: true
+      asym: source
+      size: 18
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: mirror_thumbfan_last_thumb
+          shift: [po, po]
+        - ref: mirror_thumbfan_last_thumb
+          shift: [po, -po]
+        - ref: mirror_matrix_pinky_far_bottom
+          shift: [-po, -po]   
+        - ref: mirror_matrix_pinky_far_top
+          shift: [-po, po]          
+        - ref: mirror_matrix_middle_top
+          shift: [-po, po]
+        - ref: mirror_matrix_middle_top
+          shift: [po, po]  
+        - ref: mirror_matrix_index_far_top
+          shift: [po, po]  
+        - ref: matrix_index_far_top
+          shift: [po, po]  
+        - ref: matrix_middle_top
+          shift: [po, po]          
+        - ref: matrix_middle_top
+          shift: [-po, po]
+        - ref: matrix_pinky_far_top
+          shift: [-po, po]
+        - ref: matrix_pinky_far_bottom
+          shift: [-po, -po]          
+        - ref: thumbfan_last_thumb
+          shift: [po, -po]
+        - ref: thumbfan_last_thumb
+          shift: [po, po]          
+      fillet: 4
+
+  screwholes:
+    - what: circle
+      where:
+        - ref: mirror_thumbfan_far_thumb
+          shift: [po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_thumbfan_far_thumb
+          shift: [po_h,po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_thumbfan_near_thumb
+          shift: [-po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_far_bottom
+          shift: [-po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_far_top
+          shift: [-po_h,po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_middle_top
+          shift: [-po_h,po_h]
+      radius: 1.5      
+    - what: circle
+      where:
+        - ref: mirror_matrix_middle_top
+          shift: [po_h,po_h]
+      radius: 1.5 
+    - what: circle
+      where:
+        - ref: mirror_matrix_index_far_top
+          shift: [po_h+1,0]
+      radius: 1.5            
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_bottom
+          shift: [po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: mirror_matrix_middle_bottom
+          shift: [0,-po_h-2] 
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: thumbfan_far_thumb
+          shift: [po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: thumbfan_far_thumb
+          shift: [po_h,po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: thumbfan_near_thumb
+          shift: [-po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_pinky_far_bottom
+          shift: [-po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_pinky_far_top
+          shift: [-po_h,po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_middle_top
+          shift: [-po_h,po_h]
+      radius: 1.5      
+    - what: circle
+      where:
+        - ref: matrix_middle_top
+          shift: [po_h,po_h]
+      radius: 1.5 
+    - what: circle
+      where:
+        - ref: matrix_index_far_top
+          shift: [po_h+1,0]
+      radius: 1.5            
+    - what: circle
+      where:
+        - ref: matrix_pinky_bottom
+          shift: [po_h,-po_h]
+      radius: 1.5
+    - what: circle
+      where:
+        - ref: matrix_middle_bottom
+          shift: [0,-po_h-2] 
+      radius: 1.5
+  switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: switch_cutout_size 
+      bound: false   
+  keycaps_w_spacer:
+    - what: rectangle
+      where: true
+      asym: source
+      bound: true
+      size: 22
+      fillet: 1.5  
+  keys_plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: switch_cutouts
+      operation: subtract
+    - what: outline
+      name: screwholes
+      operation: subtract
+  top_plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract  
+    - what: outline
+      name: keycaps_w_spacer
+      operation: subtract  
+  bottom_plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract  
+  full_preview:
+    - what: outline
+      name: board
+    - what: outline
+      name: screwholes
+      operation: subtract  
+    - what: outline
+      name: keycaps_w_spacer
+      operation: subtract  
+    - what: outline
+      name: keycaps            
+

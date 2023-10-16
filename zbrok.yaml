@@ -1,0 +1,68 @@
+units:
+  switch_cutout_size: 15.7
+  kx : 19
+  ky : kx
+points:
+  zones:
+    matrix:
+      key:
+        spread: kx
+      columns:
+        pinky_far:
+        pinky:
+        ring:
+          key.stagger: .75*ky
+        middle:
+          key.stagger: 0.5*ky
+        index:
+          key.stagger: -0.75*ky
+        index_far:
+          key.stagger: -0.2*ky
+      rows:
+        bottom:
+        home:
+        top:
+    thumbfan:
+      anchor:
+        ref: matrix_index_bottom
+        shift: [0, -25]
+      columns:
+        near:
+          key.bind: [0,0,0,0]
+          key.column_net: B3
+        home:
+          key.bind: [0,0,0,0]
+          key.spread: 19.5
+          key.splay: -10
+          key.origin: [-11.75, -9]
+          key.column_net: B7
+        far:
+          key.bind: [0,0,0,0]
+          key.spread: 19.5
+          key.splay: -10
+          key.origin: [-10.7, -10]
+          key.column_net: D0
+        last:
+          key.spread: 19.5
+          key.splay: -10
+          key.origin: [-10.7, -10]
+      rows:
+        thumb:
+          row_net: F7
+  rotate: -20
+  mirror:
+    ref: matrix_pinky_home
+    distance: 225
+
+outlines: 
+  keycaps: 
+    - what: rectangle
+      where: true
+      asym: source
+      size: 18.5
+  switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: switch_cutout_size 
+      bound: false   

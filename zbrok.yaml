@@ -2,7 +2,8 @@ units:
   switch_cutout_size: 15.7
   kx : 19.5
   ky : kx
-  offset: 8+kx/2
+  offset: 3 +kx/2
+  o: kx/2 
 points:
   zones:
     matrix:
@@ -44,6 +45,77 @@ points:
     distance: 225
 
 outlines: 
+  screw_holes:
+    - what: circle
+      where:
+        - ref: matrix_pinky_far_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: matrix_pinky_far_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: matrix_ring_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: matrix_ring_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: matrix_index_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: matrix_index_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: thumbfan_far_thumb
+          shift: [-o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_far_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_far_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_ring_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_ring_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_index_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_index_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_thumbfan_far_thumb
+          shift: [-o,0]
+      radius: 1.1
   board:
     - what: polygon
       operation: stack
@@ -102,11 +174,15 @@ outlines:
     - what: outline
       name: switch_cutouts
       operation: subtract 
+    - what: outline
+      name: screw_holes
+      operation: subtract 
+    - what: outline
+      name: screw_holes
+
 pcbs:
   mainboard:
     outlines:
-      main:
-        outline: board
     footprints:
       switches:
         what: MH3SS2

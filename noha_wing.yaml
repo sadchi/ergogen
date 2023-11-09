@@ -1,0 +1,196 @@
+units:
+  switch_cutout_size: 13.8
+  kx : u
+  ky : kx
+  offset: 3 +kx/2
+  o: kx/2 
+points:
+  zones:
+    matrix:
+      key:
+        spread: kx
+        padding: kx
+      columns:
+        pinky_far:
+        pinky:
+          rows.top2.skip: true
+          key.stagger: 0.25*ky
+        ring:
+          rows.top2.skip: true
+          key.stagger: 0.75*ky
+        middle:
+          rows.top2.skip: true
+          key.stagger: 0.5*ky
+        index:
+          rows.top2.skip: true
+          key.stagger: -0.5*ky
+        index_far:
+          rows.top2.skip: true
+          key.stagger: -0.25*ky
+        extra:
+          rows.top2.skip: true
+          rows.top.skip: true
+          rows.home.skip: true
+          key.splay: -10
+          key.origin: [-28, -11]
+      rows:
+        bottom:
+        home:
+        top:
+        top2:
+    thumbfan:
+      anchor:
+        ref: matrix_middle_bottom
+        shift: [0,-34]
+      columns:
+        с1:
+        с2:
+          key.spread: 21.25
+          key.splay: -5
+          key.origin: [-9.5, -9]
+        c3:
+          key.spread: 21.25
+          key.splay: -5
+          key.origin: [-9.5, -9]
+        c4:
+          key.spread: 21.25
+          key.splay: -5
+          key.origin: [-9.5, -9]
+      rows:
+        thumb:
+    thumbmiddle:
+      anchor:
+        ref: thumbfan_c4_thumb
+        shift: [30*0.819,30*0.573]
+      columns:
+        near:
+          key.splay: 35
+          key.width: 1.5kx
+          key.asym: left
+          key.shift: [0,-7]
+      rows:
+        thumb:
+
+          
+  rotate: -20
+  mirror:
+    ref: thumbfan_c4_thumb
+    distance: 60
+
+outlines: 
+  screw_holes:
+    - what: circle
+      where:
+        - ref: matrix_pinky_far_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: matrix_pinky_far_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: matrix_ring_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: matrix_ring_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: matrix_index_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: matrix_index_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_far_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_pinky_far_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_ring_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_ring_bottom
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_index_top
+          shift: [o,0]
+      radius: 1.1
+    - what: circle
+      where:
+        - ref: mirror_matrix_index_bottom
+          shift: [o,0]
+      radius: 1.1
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_pinky_far_bottom
+          shift: [-offset,-offset]
+        - ref: matrix_pinky_far_top
+          shift: [-offset,offset]
+        - ref: matrix_middle_top
+          shift: [-offset,offset]
+        - ref: matrix_middle_top
+          shift: [offset,offset]
+        - ref: matrix_index_top
+          shift: [offset,offset]
+        - ref: mirror_matrix_index_top
+          shift: [offset,offset]
+        - ref: mirror_matrix_middle_top
+          shift: [offset,offset]
+        - ref: mirror_matrix_middle_top
+          shift: [-offset,offset]
+        - ref: mirror_matrix_pinky_far_top
+          shift: [-offset,offset]
+        - ref: mirror_matrix_pinky_far_bottom
+          shift: [-offset,-offset]
+      fillet: 4 
+  keycaps: 
+    - what: rectangle
+      where: true
+      asym: source
+      size: 18.5
+  switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: switch_cutout_size 
+      bound: false 
+  all:
+    - what: outline
+      name: board
+    - what: outline
+      name: keycaps
+      operation: subtract 
+    - what: outline
+      name: switch_cutouts
+  plate:
+    - what: outline
+      name: board
+    - what: outline
+      name: switch_cutouts
+      operation: subtract 
+    - what: outline
+      name: screw_holes
+      operation: subtract 
+    - what: outline
+      name: screw_holes

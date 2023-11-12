@@ -56,7 +56,7 @@ points:
     thumbmiddle:
       anchor:
         ref: thumbfan_c4_thumb
-        shift: [40*0.819,40*0.573]
+        shift: [43*0.819,43*0.573]
       columns:
         near:
           key.splay: 35
@@ -70,7 +70,7 @@ points:
   rotate: -20
   mirror:
     ref: thumbfan_c4_thumb
-    distance: 80
+    distance: 86
 
 outlines: 
   screw_holes:

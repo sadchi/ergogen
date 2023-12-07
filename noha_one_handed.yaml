@@ -1,0 +1,64 @@
+units:
+  switch_cutout_size: 13.75
+  kx : u
+  ky : kx
+  offset: 3 +kx/2
+  o: kx/2 
+points:
+  zones:
+    matrix:
+      key:
+        spread: kx
+        padding: kx
+      columns:
+        pinky:
+          rows.top.skip: true
+          key.stagger: 0.25*ky
+        ring:
+          rows.top2.skip: true
+          key.stagger: 0.5*ky
+        middle:
+          rows.top2.skip: true
+          key.stagger: 0.5*ky
+        index:
+          rows.top2.skip: true
+          key.stagger: -0.5*ky
+      rows:
+        home:
+        top:
+    thumbfan:
+      anchor:
+        ref: matrix_index_home
+        shift: [12,-46]
+      columns:
+        с1:
+        с2:
+          key.spread: 21.25
+          key.splay: -15
+          key.origin: [-9.5, -9]
+        c3:
+          key.spread: 21.25
+          key.splay: -15
+          key.origin: [-9.5, -9]
+      rows:
+        thumb:
+
+outlines: 
+  keycaps: 
+    - what: rectangle
+      where: true
+      asym: source
+      size: 18.5
+  switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: switch_cutout_size 
+      bound: false 
+  all:
+    - what: outline
+      name: keycaps
+      operation: subtract 
+    - what: outline
+      name: switch_cutouts
+
